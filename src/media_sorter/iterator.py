@@ -25,7 +25,8 @@ class FileIterator:
         for root, _, files in os.walk(self.directory):
             for name in files:
                 if self.extensions is None or name.lower().endswith(tuple(self.extensions)):
-                    file_path = os.path.join(root, name)
+                    file_path = os.path.join(root, name).replace(os.sep, '/')
                     metadata = extract_dates(str(file_path))
                     earliest_date = get_earliest_date(metadata)
                     yield file_path, earliest_date
+
