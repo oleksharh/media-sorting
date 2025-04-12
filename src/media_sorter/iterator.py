@@ -1,12 +1,24 @@
 import os
 
-def iter_media_files(directory, extensions=None):
+class FileIterator:
     """
-    Generator that yields file paths matching given extensions.
-    :param directory: Path to root media directory
-    :param extensions: Optional set/list of file extensions to filter
+    A class to iterate over files in a directory.
     """
-    for root, _, files in os.walk(directory):
-        for name in files:
-            if extensions is None or name.lower().endswith(tuple(extensions)):
-                yield os.path.join(root, name)
+
+    def __init__(self, directory, extensions=None):
+        """
+        Initialize the iterator with a directory and optional extensions.
+        :param directory: Path to root media directory
+        :param extensions: Optional set/list of file extensions to filter
+        """
+        self.directory = directory
+        self.extensions = extensions
+
+    def __iter__(self):
+        """
+        Make the class iterable.
+        """
+        for root, _, files in os.walk(self.directory):
+            for name in files:
+                if self.extensions is None or name.lower().endswith(tuple(self.extensions)):
+                    yield os.path.join(root, name)

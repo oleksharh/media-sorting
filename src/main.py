@@ -15,4 +15,4 @@ for file_path in file_paths:
 
     print("Earliest Date:")
     earliest_date = get_earliest_date(metadata)
-    print(earliest_date)
+    print(earliest_date.year)

@@ -34,10 +34,11 @@ def extract_dates(file_path):
                     tag = TAGS.get(tag_id, tag_id)
                     if "DateTime" in tag: # there are attrs ("DateTime", "DateTimeOriginal", "DateTimeDigitized")
                         metadata[tag] = value
-            else:
-                return None    
 
-            return metadata
+            if not metadata:
+                pass
+            else:
+                return metadata
         
     # Error Logging and Handling
     except Exception as e:
@@ -54,7 +55,10 @@ def extract_dates(file_path):
                     if "date" in key.lower():
                         metadata[key] = value
             else:
+                print(f"\033[92mTrack type: {track.track_type}\033[0m")
+                print(f"\033[92mKey: {key}, Value: {value}\033[0m")
                 return None
+                
 
             return metadata
         
