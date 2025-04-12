@@ -16,3 +16,5 @@ common_attrs.txt
 error_files.txt
 error.txt
 .vscode
+__pycache__
+*.pyc

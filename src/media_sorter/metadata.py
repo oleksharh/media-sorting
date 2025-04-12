@@ -68,7 +68,39 @@ def extract_dates(file_path):
 
         return None
 
+def extract_metadata(file_path):
+    """
+    Extract metadata from a media file using pymediainfo.
+    
+    Args:
+        file_path (str): Path to the media file.
+        
+    Returns:
+        dict: Metadata extracted from the file.
+    """
+    metadata = {}
 
+    # Extract metadata using pymediainfo
+    try:
+        media_info = MediaInfo.parse(file_path)
+        for track in media_info.tracks:
+            if track.track_type == "General":
+                for key, value in track.to_data().items():
+                    metadata[key] = value
+            else:
+                return None
+
+            return metadata
+        
+    # Error Logging and Handling
+    except Exception as e:
+        with open(error_log_path, "a") as error_log:
+            error_log.write(f"Error extracting metadata from {file_path}: {e}\n")
+        with open(error_files_path, "a") as error_files:
+            error_files.write(f"{file_path}\n")
+        print(f"Metadata extraction failed: {e}")
+
+        return None
 
 
 
