@@ -12,9 +12,7 @@ IphoneMediaFiles
 *.CAF
 *.AIFF
 *.WAV
-common_attrs.txt
-error_files.txt
-error.txt
 .vscode
+common_attrs.txt
 __pycache__
 *.pyc

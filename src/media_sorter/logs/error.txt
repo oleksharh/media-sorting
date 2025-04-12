@@ -1,0 +1,4 @@
+Error extracting metadata from IphoneMediaFiles/BBAX3224.MP4: IphoneMediaFiles/BBAX3224.MP4
+
+Error extracting metadata from IphoneMediaFiles/AIBHE7480.JPG: IphoneMediaFiles/AIBHE7480.JPG
+
